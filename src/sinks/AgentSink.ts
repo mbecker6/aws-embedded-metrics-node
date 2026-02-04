@@ -41,7 +41,7 @@ const parseEndpoint = (endpoint: string | undefined): IEndpoint => {
       return defaultTcpEndpoint;
     }
 
-    const parsedUrl = url.parse(endpoint);
+    const parsedUrl = new URL(endpoint);
     if (!parsedUrl.hostname || !parsedUrl.port || !parsedUrl.protocol) {
       LOG(`Failed to parse the provided agent endpoint. Falling back to the default TCP endpoint.`, parsedUrl);
       return defaultTcpEndpoint;
